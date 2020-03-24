@@ -194,7 +194,7 @@ NAN_METHOD(Add) {
 	const char* ppassword = password.length() ? password.c_str() : NULL;
 
 	SC_HANDLE svc_handle = CreateService (scm_handle, *name, *display_name,
-			SERVICE_ALL_ACCESS, SERVICE_WIN32_OWN_PROCESS, SERVICE_AUTO_START,
+			SERVICE_ALL_ACCESS, SERVICE_WIN32_OWN_PROCESS, SERVICE_DEMAND_START,
 			SERVICE_ERROR_NORMAL, *path, 0, 0, deps, pusername,
 			ppassword);
 
