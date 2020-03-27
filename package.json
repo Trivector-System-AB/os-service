@@ -23,6 +23,12 @@
     "type": "git",
     "url": "git://github.com/nospaceships/node-os-service.git"
   },
+  "pkg": {
+      "assets": "native-precompiled/**",
+      "patches": {
+          "index.js": ["\"./build/Release/service\"", "path.join(moduleDir, \"service\")"]
+      }
+  },
   "keywords": [
     "background-process",
     "background-service",

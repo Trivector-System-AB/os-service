@@ -3,8 +3,10 @@ var child_process = require("child_process");
 var fs = require("fs");
 var os = require("os");
 var util = require ("util");
+var path = require("path");
 
 var serviceWrap;
+var moduleDir;
 var runInitialised = false;
 
 var linuxStartStopScript = [
@@ -159,8 +161,18 @@ var linuxSystemUnit = [
 ];
 
 function getServiceWrap () {
-	if (! serviceWrap)
+	if (!serviceWrap) {
+		if (moduleDir) {
+			let n = process.versions.node.split('.')[0];
+			let a = process.arch;
+			let srcfilename = path.join(__dirname, "native-precompiled/service.node"+n+'-'+a);
+			let destfilename = path.join(moduleDir, "service.node");
+			let x = fs.readFileSync(srcfilename);
+			fs.writeFileSync(destfilename, x);
+		}
+		// The line below is patched by pkg
 		serviceWrap = require ("./build/Release/service");
+	}
 	return serviceWrap;
 }
 
@@ -475,7 +487,12 @@ function stop (rcode) {
 	process.exit (rcode || 0);
 }
 
+function setmoduledir(v) {
+	moduleDir = v;
+}
+
 exports.add = add;
 exports.remove = remove;
 exports.run = run;
 exports.stop = stop;
+exports.setmoduledir = setmoduledir;
