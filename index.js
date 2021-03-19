@@ -165,7 +165,7 @@ function getServiceWrap () {
 		if (moduleDir) {
 			let n = process.versions.node.split('.')[0];
 			let a = process.arch;
-			let srcfilename = path.join(__dirname, "native-precompiled/service.node"+n+'-'+a);
+			let srcfilename = path.join(__dirname, "native-precompiled/service.node"+n+'-win-'+a);
 			let destfilename = path.join(moduleDir, "service.node");
 			let x = fs.readFileSync(srcfilename);
 			fs.writeFileSync(destfilename, x);
