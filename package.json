@@ -7,7 +7,7 @@
     "example": "example"
   },
   "dependencies": {
-    "nan": "2.14.x"
+    "nan": "2.22"
   },
   "contributors": [
     {
@@ -24,10 +24,13 @@
     "url": "git://github.com/nospaceships/node-os-service.git"
   },
   "pkg": {
-      "assets": "native-precompiled/**",
-      "patches": {
-          "index.js": ["\"./build/Release/service\"", "path.join(moduleDir, \"service\")"]
-      }
+    "assets": "native-precompiled/**",
+    "patches": {
+      "index.js": [
+        "\"./build/Release/service\"",
+        "path.join(moduleDir, \"service\")"
+      ]
+    }
   },
   "keywords": [
     "background-process",
