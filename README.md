@@ -1,3 +1,9 @@
+# Note to Trivector employees
+
+This repository is public, for two reasons:
+
+ * It was forked from a public repository
+ * It makes running of some tests easier to set up
 
 # os-service
 
